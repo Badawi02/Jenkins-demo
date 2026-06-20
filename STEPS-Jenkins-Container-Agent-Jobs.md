@@ -1,10 +1,8 @@
 # Jenkins Container Demo Steps
 
-This file contains a complete instructor demo for students.
-
 The demo covers:
 
-1. Install Jenkins as a normal Docker container, without Docker Compose.
+1. Install Jenkins as a normal Docker container.
 2. Configure Jenkins with a new slave/agent.
 3. Start the slave/agent as another Docker container.
 4. Build a simple Java Maven app using three job types:
@@ -139,41 +137,7 @@ Password: admin123
 
 ---
 
-# Part 2 — Prepare the Simple Java App Git Repository
-
-From the demo folder:
-
-```bash
-cd "$DEMO_DIR/java-demo-app"
-git init
-git config user.email "student@example.com"
-git config user.name "Student"
-git add .
-git commit -m "Initial Java Maven app"
-git branch -M main
-```
-
-Create a feature branch for the Multibranch Pipeline demo:
-
-```bash
-git checkout -b feature/demo-change
-cp Jenkinsfile-feature Jenkinsfile
-git add Jenkinsfile
-git commit -m "Feature branch Jenkinsfile"
-git checkout main
-```
-
-Test locally if Maven is installed on your host:
-
-```bash
-mvn clean test
-```
-
-If Maven is not installed on the host, no problem. Jenkins agent container will have Maven.
-
----
-
-# Part 3 — Configure Jenkins with New Slave/Agent
+# Part 2 — Configure Jenkins with New Slave/Agent
 
 In Jenkins UI:
 
@@ -225,7 +189,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ---
 
-# Part 4 — Start New Slave as Container
+# Part 3 — Start New Slave as Container
 
 First build the custom Jenkins agent image.
 
@@ -282,7 +246,7 @@ Manage Jenkins → Nodes
 
 ---
 
-# Part 5 — Create Job Type 1: Freestyle
+# Part 4 — Create Job Type 1: Freestyle
 
 Goal:
 
@@ -383,7 +347,7 @@ Explain:
 
 ---
 
-# Part 6 — Create Job Type 2: Pipeline
+# Part 5 — Create Job Type 2: Pipeline
 
 Goal:
 
@@ -480,7 +444,7 @@ Explain:
 
 ---
 
-# Part 7 — Create Job Type 3: Multibranch Pipeline
+# Part 6 — Create Job Type 3: Multibranch Pipeline
 
 Goal:
 
@@ -574,7 +538,7 @@ Explain:
 
 ---
 
-# Part 8 — Clean Up
+# Part 7 — Clean Up
 
 Stop and remove slave:
 
