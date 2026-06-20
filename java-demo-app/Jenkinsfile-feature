@@ -1,0 +1,22 @@
+pipeline {
+    agent { label 'docker && linux && maven' }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Feature Branch Build') {
+            steps {
+                sh '''
+                    echo "Running feature branch pipeline"
+                    echo "Branch: ${BRANCH_NAME}"
+                    mvn -B clean test
+                '''
+            }
+        }
+    }
+}
+

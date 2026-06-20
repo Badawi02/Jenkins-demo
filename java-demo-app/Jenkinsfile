@@ -1,0 +1,30 @@
+pipeline {
+    agent { label 'docker && linux && maven' }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn -B clean package'
+            }
+        }
+
+        stage('Run App') {
+            steps {
+                sh 'java -jar target/jenkins-java-demo-1.0.0.jar'
+            }
+        }
+
+        stage('Archive Artifact') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
+    }
+}
+
