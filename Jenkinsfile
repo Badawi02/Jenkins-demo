@@ -27,7 +27,7 @@ pipeline {
                     cd java-demo-app
                     mvn -B clean package
                     mkdir -p "$WORKSPACE/dist"
-                    cp target//mnt/sda4/Kimit/Jenkins-java-demo-1.0.0.jar "$WORKSPACE/dist/"
+                    cp /home/jenkins/agent/workspace/demo-02-pipeline-java/java-demo-app/target/Jenkins-java-demo-1.0.0.jar "$WORKSPACE/dist/"
                 '''
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Run App') {
             steps {
                 sh '''
-                    cd /mnt/sda4/Kimit/Jenkins/java-demo-app
+                    cd /home/jenkins/agent/workspace/demo-02-pipeline-java/java-demo-app/target
                     java -jar target/jenkins-java-demo-1.0.0.jar
                 '''
             }
