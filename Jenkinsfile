@@ -35,7 +35,7 @@ pipeline {
                     cd java-demo-app
                     mvn -B clean package
                     mkdir -p "$WORKSPACE/dist"
-                    cp env.path_repo/jenkins-java-demo-1.0.0.jar "$WORKSPACE/dist/"
+                    cp "$path_repo/jenkins-java-demo-1.0.0.jar" "$WORKSPACE/dist/"
                 """
             }
         }
@@ -43,7 +43,7 @@ pipeline {
         stage('Run App') {
             steps {
                 sh """
-                    cd env.path_repo
+                    cd $path_repo
                     java -jar jenkins-java-demo-1.0.0.jar
                 """
             }
