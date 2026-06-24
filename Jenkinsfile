@@ -16,7 +16,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 git branch: "dev",
-                    credentialsId: 'badawi_cred',
+                    credentialsId: 'Badawi_cred',
                     url: 'https://github.com/Badawi02/Jenkins-demo.git'
             }
         }
