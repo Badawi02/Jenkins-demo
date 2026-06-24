@@ -31,19 +31,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh '''
+                sh """
                     cd java-demo-app
                     mvn -B clean package
                     mkdir -p "$WORKSPACE/dist"
                     cp env.path_repo/jenkins-java-demo-1.0.0.jar "$WORKSPACE/dist/"
-                '''
+                """
             }
         }
 
         stage('Run App') {
             steps {
                 sh """
-                    cd ${path_repo}
+                    cd env.path_repo
                     java -jar jenkins-java-demo-1.0.0.jar
                 """
             }
