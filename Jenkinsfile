@@ -35,7 +35,7 @@ pipeline {
         stage('Run App') {
             steps {
                 sh '''
-                    cd /home/jenkins/agent/workspace/demo-02-pipeline-java/java-demo-app/target
+                    cd /home/jenkins/agent/workspace/demo-02-pipeline-java/java-demo-app/target/
                     java -jar target/jenkins-java-demo-1.0.0.jar
                 '''
             }
