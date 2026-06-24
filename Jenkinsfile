@@ -43,7 +43,7 @@ pipeline {
         stage('Run App') {
             steps {
                 sh """
-                    cd env.path_repo
+                    cd ${path_repo}
                     java -jar jenkins-java-demo-1.0.0.jar
                 """
             }
