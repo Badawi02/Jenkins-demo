@@ -13,10 +13,17 @@ pipeline {
             }
         }
 
+        stage('Clone Repository') {
+            steps {
+                git branch: "dev",
+                    credentialsId: 'badawi_cred',
+                    url: 'https://github.com/Badawi02/Jenkins-demo.git'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh '''
-                    cd /mnt/sda4/Kimit/Jenkins/java-demo-app
                     mvn -B clean package
                     mkdir -p "$WORKSPACE/dist"
                     cp target//mnt/sda4/Kimit/Jenkins-java-demo-1.0.0.jar "$WORKSPACE/dist/"
